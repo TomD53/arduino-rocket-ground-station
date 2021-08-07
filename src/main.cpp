@@ -31,15 +31,10 @@ const uint64_t pipe = 0xE8E8F0F0E1LL;
 void setup()
 {
   Serial.begin(115200);
-  Serial.println("Starting setup");
   radio.begin();
-  Serial.println("Started radio");
   radio.setDataRate(RF24_1MBPS);
-  Serial.println("Set data rate");
   radio.setPALevel(RF24_PA_MAX);
-  Serial.println("Set PA level");
   radio.openReadingPipe(1, pipe);
-  Serial.println("Opened reading pipe");
 }
 
 void loop()
