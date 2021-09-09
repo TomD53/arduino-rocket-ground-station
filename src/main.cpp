@@ -85,25 +85,17 @@ void loop()
     if (payload.packet_id >= last_packet_id) {
       
       unsigned int packet_delta = payload.packet_id - last_packet_id;
-      //Serial.print("packet_delta: ");
-      //Serial.print(packet_delta);
       unsigned int recv_delta = recv_id - last_recv_id;
-      //Serial.print(" | recv_delta: ");
-      //Serial.print(recv_delta);
 
       // if there was some packet loss, packet_delta will be higher than recv_delta and
       // there will be some difference `diff`
 
       int diff = packet_delta - recv_delta;
-      //Serial.print(" | diff: ");
-      //Serial.print(diff);
       if (packet_delta == 0 && recv_delta == 0) {
         loss_percent = 100;
       } else {
         loss_percent = (diff * 100) / packet_delta;
       }
-      //Serial.print(" | loss_percent: ");
-      //Serial.println(loss_percent);
     }
 
     last_recv_id = recv_id;
