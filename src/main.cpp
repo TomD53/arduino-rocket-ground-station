@@ -18,8 +18,8 @@ struct Payload
   int altitude;
   float temp;
 
-  bool digital_channel_1;
-  bool digital_channel_2;
+  unsigned int vcc;
+  unsigned int packet_id;
 };
 
 Payload payload;
@@ -61,6 +61,10 @@ void loop()
     Serial.print(payload.altitude);
     Serial.print(",");
     Serial.print(payload.temp);
+    Serial.print(",");
+    Serial.print(payload.vcc);
+    Serial.print(",");
+    Serial.print(payload.packet_id);
 
     Serial.println();
   }
